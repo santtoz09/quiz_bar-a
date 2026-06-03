@@ -31,10 +31,8 @@ body {
   isolation: isolate;
   overflow: hidden;
   background:
-    linear-gradient(rgba(185, 0, 38, 0.83), rgba(185, 0, 38, 0.83)),
-    radial-gradient(circle at 43% 45%, rgba(255, 255, 255, 0.14), transparent 0 8%, rgba(0, 0, 0, 0) 9%),
-    linear-gradient(105deg, transparent 0 18%, rgba(255, 255, 255, 0.1) 18.3% 18.7%, transparent 19%),
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.07) 0 2px, transparent 2px 92px),
+    linear-gradient(rgba(115, 0, 25, 0.3), rgba(115, 0, 25, 0.3)),
+    url("background.png") center / cover no-repeat,
     linear-gradient(120deg, #521228, #142857 46%, #861124 76%);
 }
 
@@ -42,35 +40,20 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: -3;
-  opacity: 0.33;
+  z-index: -2;
+  pointer-events: none;
   background:
-    radial-gradient(ellipse at 21% 55%, rgba(2, 7, 21, 0.55) 0 5%, transparent 6%),
-    radial-gradient(ellipse at 31% 38%, rgba(2, 7, 21, 0.55) 0 7%, transparent 8%),
-    radial-gradient(ellipse at 45% 37%, rgba(2, 7, 21, 0.55) 0 8%, transparent 9%),
-    radial-gradient(ellipse at 58% 39%, rgba(2, 7, 21, 0.55) 0 7%, transparent 8%),
-    radial-gradient(ellipse at 71% 38%, rgba(2, 7, 21, 0.55) 0 7%, transparent 8%),
-    linear-gradient(90deg, transparent 12%, rgba(30, 0, 14, 0.38) 12% 82%, transparent 82%);
-  filter: blur(1px);
+    radial-gradient(circle at 28% 22%, rgba(255, 255, 255, 0.16), transparent 0 18%),
+    linear-gradient(90deg, rgba(20, 40, 87, 0.2), rgba(181, 0, 37, 0.28));
 }
 
 .app-shell::after {
   content: "";
   position: absolute;
-  right: -105px;
-  bottom: -145px;
-  width: 430px;
-  height: 520px;
+  inset: 0;
   z-index: -1;
-  transform: rotate(43deg);
-  background: repeating-linear-gradient(
-    90deg,
-    var(--barca-blue) 0 55px,
-    transparent 55px 83px,
-    var(--barca-blue) 83px 138px,
-    transparent 138px 166px
-  );
-  filter: saturate(1.35);
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.44));
 }
 
 .screen {
@@ -257,94 +240,29 @@ body {
 }
 
 .crest {
-  position: relative;
-  display: grid;
-  place-items: center;
-  width: 320px;
-  height: 360px;
-  color: #101010;
-  background: linear-gradient(#ffd641 0 42%, #082b8d 42% 100%);
-  border: 9px solid #16120e;
-  border-radius: 31% 31% 45% 45% / 19% 19% 53% 53%;
-  box-shadow: 0 10px 12px rgba(0, 0, 0, 0.38);
-  overflow: hidden;
-}
-
-.crest::before {
-  content: "";
-  position: absolute;
-  inset: 45% 0 auto;
-  height: 48px;
-  background: #f4c12e;
-  border-top: 7px solid #15100d;
-  border-bottom: 7px solid #15100d;
-  z-index: 2;
-}
-
-.crest::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(90deg, transparent 0 21%, #c50031 21% 37%, transparent 37% 53%, #c50031 53% 69%, transparent 69%),
-    radial-gradient(circle at 50% 75%, #f4c12e 0 15%, transparent 15.5%);
-  mix-blend-mode: multiply;
-  opacity: 0.95;
-}
-
-.crest__top {
-  position: absolute;
-  top: 9%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 78%;
-  height: 34%;
-  z-index: 1;
-}
-
-.crest__top b {
-  display: grid;
-  place-items: center;
-  color: #d8002f;
-  background: white;
-  font-size: 4.3rem;
-  line-height: 1;
-}
-
-.crest__top i {
-  background: repeating-linear-gradient(90deg, #ffd641 0 19px, #d60031 19px 36px);
-}
-
-.crest strong {
-  position: relative;
-  z-index: 3;
-  margin-top: 13%;
-  font-size: 3.3rem;
-  letter-spacing: 0.08em;
-}
-
-.crest__bottom {
-  position: absolute;
-  bottom: 9%;
-  z-index: 2;
-  width: 60px;
-  height: 60px;
-  border: 5px solid rgba(30, 15, 0, 0.65);
-  border-radius: 50%;
-  background: #efc338;
+  width: clamp(210px, 23vw, 340px);
+  aspect-ratio: 1 / 1.12;
+  background: url("barcelona.png") center / contain no-repeat;
+  filter: drop-shadow(0 16px 14px rgba(0, 0, 0, 0.42));
+  pointer-events: none;
+  user-select: none;
 }
 
 .crest--home {
   position: absolute;
   left: 58vw;
   top: 31vh;
-  transform: translate(-50%, -50%) scale(0.92);
+  transform: translate(-50%, -50%) scale(0.98);
 }
 
 .crest--question {
   justify-self: start;
   margin-top: 1.2rem;
-  transform: scale(0.92);
+  transform: scale(0.98);
+}
+
+.crest--result {
+  transform: scale(1.05);
 }
 
 .result-panel {
@@ -353,10 +271,6 @@ body {
   align-items: center;
   gap: clamp(30px, 5vw, 86px);
   height: 100%;
-}
-
-.crest--result {
-  transform: scale(1.05);
 }
 
 .result-copy {
@@ -430,15 +344,15 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .crest--home,
-  .crest--question,
-  .crest--result {
-    transform: scale(0.55);
-  }
-
   .crest--home {
     left: 50%;
     top: 52%;
+    transform: translate(-50%, -50%) scale(0.55);
+  }
+
+  .crest--question,
+  .crest--result {
+    transform: scale(0.55);
   }
 
   .hero-title {
